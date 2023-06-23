@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Forever2",
+  "description": "Practice extension",
+  "version": "1.0",
+  "background": {
+    "service_worker": "/background/background.js"
+  },
+  "action": {
+    "default_title": "bookmark",
+    "default_icon": {
+      "16": "/assets/image/bookmark16.png",
+      "48": "/assets/image/bookmark48.png",
+      "128": "/assets/image/bookmark128.png"
+     }
+   },
+   "icons": {
+      "16": "/assets/image/bookmark16.png",
+      "48": "/assets/image/bookmark48.png",
+      "128": "/assets/image/bookmark128.png"
+   },
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "permissions": [
+    "tabs",
+    "notifications"
+  ]
+}
