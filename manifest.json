@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Forever2",
+  "name": "Forever3",
   "description": "Practice extension",
   "version": "1.0",
   "background": {
@@ -12,7 +12,8 @@
       "16": "/assets/image/bookmark16.png",
       "48": "/assets/image/bookmark48.png",
       "128": "/assets/image/bookmark128.png"
-     }
+     },
+     "default_popup" : "/popup/popupSignIn.html"
    },
    "icons": {
       "16": "/assets/image/bookmark16.png",
@@ -22,6 +23,6 @@
   "host_permissions": ["http://*/*", "https://*/*"],
   "permissions": [
     "tabs",
-    "notifications"
+    "storage"
   ]
 }
