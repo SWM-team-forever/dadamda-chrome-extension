@@ -1,28 +1,29 @@
 {
   "manifest_version": 3,
-  "name": "Forever3",
-  "description": "Practice extension",
-  "version": "1.0",
+  "name": "DADAMDA",
+  "description": "Add images, bookmarks, text highlights to your dadamda script book.",
+  "version": "1.0.0",
   "background": {
     "service_worker": "/background/background.js"
   },
   "action": {
     "default_title": "bookmark",
     "default_icon": {
-      "16": "/assets/image/bookmark16.png",
-      "48": "/assets/image/bookmark48.png",
-      "128": "/assets/image/bookmark128.png"
-     },
-     "default_popup" : "/popup/popupSignIn.html"
+      "16": "/assets/image/dadamda-logo16.png",
+      "48": "/assets/image/dadamda-logo48.png",
+      "128": "/assets/image/dadamda-logo128.png"
+     }
    },
    "icons": {
-      "16": "/assets/image/bookmark16.png",
-      "48": "/assets/image/bookmark48.png",
-      "128": "/assets/image/bookmark128.png"
+      "16": "/assets/image/dadamda-logo16.png",
+      "48": "/assets/image/dadamda-logo48.png",
+      "128": "/assets/image/dadamda-logo128.png"
    },
   "host_permissions": ["http://*/*", "https://*/*"],
   "permissions": [
     "tabs",
-    "storage"
+    "storage",
+    "activeTab",
+    "scripting"
   ]
 }
