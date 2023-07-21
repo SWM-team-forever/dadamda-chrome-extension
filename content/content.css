@@ -1,0 +1,73 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+
+#dadamda-popup{
+  box-sizing: border-box;
+  font-family: 'NanumSquare', sans-serif;
+  z-index: 10000 !important;
+  position: fixed !important;
+  left: 80%;
+  margin: 10px 0 20px 0;
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+}
+
+#dadamda-icon {
+  width: 13%;
+}
+
+#dadamda-popup{
+  top: 10%;
+  opacity: 1;
+  pointer-events: auto;
+  transform:translate(-50%, -50%) scale(1);
+}
+#dadamda-popup :is(header){
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#dadamda-popup header{
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ebedf9;
+}
+
+#dadamda-title{
+  font-size: 21px;
+  font-weight: 700;
+  color: #475467;
+}
+
+#dadamda-popup #dadamda-content{
+  margin: 20px 0;
+}
+
+#dadamda-content p{
+  font-size: 16px;
+  font-weight: 300;
+  color: #98A2B3;
+}
+
+#dadamda-loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #ebedf9;
+  border-bottom-color: #84ADFF;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: dadamda-rotation 1s linear infinite;
+}
+
+@keyframes dadamda-rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
