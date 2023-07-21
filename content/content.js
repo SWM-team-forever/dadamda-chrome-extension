@@ -10,7 +10,7 @@ header.appendChild(titleSpan);
 
 var iconImg = document.createElement("img");
 iconImg.setAttribute("id", "dadamda-icon");
-iconImg.setAttribute("src", "https://velog.velcdn.com/images/da_na/post/56d276bc-63dd-41e9-815a-2c40fdac9be5/image.png");
+iconImg.setAttribute("src", "chrome-extension://phcggikoaniecbgkjammhcnnfcfepgnf/assets/image/dadamda-logo128.png");
 header.appendChild(iconImg);
 
 popupDiv.appendChild(header);
