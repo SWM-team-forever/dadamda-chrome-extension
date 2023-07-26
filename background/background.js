@@ -110,11 +110,11 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.contextMenus.onClicked.addListener((info) => {
   let pageUrl = info.pageUrl;
-  let imageUrl = info.srcUrl;
+  let selectedImageUrl = info.srcUrl;
   let selectedText = info.selectionText;
   let data = null;
 
-  if (imageUrl === undefined) {
+  if (selectedImageUrl === undefined) {
     data = {
       pageUrl: `${pageUrl}`,
       selectedText: `${selectedText}`
@@ -122,7 +122,7 @@ chrome.contextMenus.onClicked.addListener((info) => {
   } else {
     data = {
       pageUrl: `${pageUrl}`,
-      imageUrl: `${imageUrl}`
+      selectedImageUrl: `${selectedImageUrl}`
     }
   }
 
