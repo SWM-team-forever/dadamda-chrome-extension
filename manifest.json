@@ -24,6 +24,13 @@
     "tabs",
     "storage",
     "activeTab",
-    "scripting"
+    "scripting",
+    "contextMenus"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [ "/assets/image/dadamda-logo128.png" ],
+      "matches": [ "http://*/*", "https://*/*" ]
+    }
   ]
 }
