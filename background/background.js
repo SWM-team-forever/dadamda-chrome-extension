@@ -1,8 +1,4 @@
-const POST_SCRAP_URL = "http://localhost:8080/v1/scraps";
-const TOKEN_URL = "http://localhost:8080/?token=";
-const GOOGLE_LOGIN_URL = "http://localhost:8080/oauth2/authorization/google";
-const POST_HIGHLIGHTS_URL = "http://localhost:8080/v1/scraps/highlights";
-const LOGIN_URL = "https://dadamda-chrome-extention.s3.ap-northeast-2.amazonaws.com/src/login.html";
+importScripts("/assets/secret/secretUrl.js")
 
 let newToken = null;
 
