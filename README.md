@@ -18,7 +18,9 @@
 - 디자인 : Figma
 
 ## 📥 다운로드
-<a href="https://chrome.google.com/webstore/detail/dadamda/kgaiabolccidmgihificdfaimdlfmcfj?hl=ko"> ![chrome](https://github.com/SWM-team-forever/dadamda-chrome-extension/assets/75533232/bb923d90-dd7b-4925-a7f1-8c76b8c7f0ab) </a>
+<img src="https://github.com/SWM-team-forever/dadamda-chrome-extension/assets/75533232/bb923d90-dd7b-4925-a7f1-8c76b8c7f0ab">
+
+https://chrome.google.com/webstore/detail/dadamda/kgaiabolccidmgihificdfaimdlfmcfj?hl=ko
 
 ## ❤️ 베타 서비스 신청서
 https://forms.gle/rrqnNShVxzaRkQvq9
