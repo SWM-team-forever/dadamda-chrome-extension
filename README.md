@@ -26,8 +26,8 @@ https://chrome.google.com/webstore/detail/dadamda/kgaiabolccidmgihificdfaimdlfmc
 https://forms.gle/rrqnNShVxzaRkQvq9
 
 ## 🛠️ 로컬 설치
-1. main에서 dadamda-chrome-extension.zip을 다운로드 받습니다.
+1. 가장 최신의 버전인 latest인 release에서 Source code.zip을 다운로드 받습니다.
 2. 파일의 압축을 풉니다.
 3. Chrome에서 확장 페이지(chrome://extensions)로 이동합니다.
 4. 개발자 모드를 활성화합니다.
-5. 압축 해제된 폴더를 페이지의 아무 곳이나 끌어 가져오십시오(이후에는 폴더를 삭제하지 마십시오).
+5. 압축 해제된 폴더를 페이지의 아무 곳이나 끌어 가져옵니다(이후에는 폴더를 삭제하지 마십시오).
