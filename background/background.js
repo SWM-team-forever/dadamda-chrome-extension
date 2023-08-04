@@ -1,4 +1,4 @@
-importScripts("/assets/secret/secretUrl.js")
+importScripts("/assets/api/apiUrl.js")
 
 let newToken = null;
 
