@@ -51,8 +51,9 @@ chrome.action.onClicked.addListener(async (tab) => {
 })
 
 function googleLogin() {
+  let loginUrl = chrome.runtime.getURL('/assets/login/login.html');
   chrome.windows.create({
-    url: LOGIN_URL,
+    url: loginUrl,
     type: "popup",
     width: 350,
     height: 600
