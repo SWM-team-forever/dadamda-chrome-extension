@@ -29,7 +29,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": [ "/assets/image/dadamda-logo128.png"],
+      "resources": [ "/assets/image/dadamda-logo128.png", "/assets/image/icon/shortcutIcon.svg" ],
       "matches": [ "http://*/*", "https://*/*" ]
     },
     {
