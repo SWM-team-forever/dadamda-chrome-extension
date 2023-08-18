@@ -31,3 +31,8 @@ https://forms.gle/rrqnNShVxzaRkQvq9
 3. Chrome에서 확장 페이지(chrome://extensions)로 이동합니다.
 4. 개발자 모드를 활성화합니다.
 5. 압축 해제된 폴더를 페이지의 아무 곳이나 끌어 가져옵니다(이후에는 폴더를 삭제하지 마십시오).
+
+## 🔧 test
+1. E2E 테스트에 필요한 npm 패키지를 설치하기 위해서, `npm install`을 실행합니다.
+(1번의 작업은 dadamda-chrome-extension 프로젝트를 처음 열 때만 수행하면 됩니다.)
+2. Puppeteer E2E 테스트 실행하기 위해서, `npm test`를 실행합니다.
