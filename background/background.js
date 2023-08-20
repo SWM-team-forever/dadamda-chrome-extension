@@ -16,7 +16,7 @@ function contentScriptCSS(tabId, file) {
   })
 }
 
-function api(url, tab, data) {
+function handleScrapOrHighlightResponse(url, tab, data) {
   chrome.storage.local.get('signedIn').then(async (result) => {
     if (result.signedIn) {
       contentScriptJS(tab.id, "content/content.js");
@@ -47,7 +47,7 @@ chrome.action.onClicked.addListener(async (tab) => {
   let data = {
     pageUrl: `${tab.url}`
   }
-  api(POST_SCRAP_URL, tab, data);
+  handleScrapOrHighlightResponse(POST_SCRAP_URL, tab, data);
 })
 
 function googleLogin() {
@@ -124,6 +124,6 @@ chrome.contextMenus.onClicked.addListener((info) => {
   }
 
   chrome.tabs.query({ currentWindow: true, active: true }, async (tabs) =>
-      api(POST_HIGHLIGHTS_URL, tabs[0], data)
+    handleScrapOrHighlightResponse(POST_HIGHLIGHTS_URL, tabs[0], data)
   );
 })
