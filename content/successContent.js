@@ -13,7 +13,7 @@ text1.innerText = '';
 
 var dadamdaLink = document.createElement("a");
 dadamdaLink.setAttribute("id", "dadamda-link");
-dadamdaLink.setAttribute("href", "https://dadamda.me/scrap/list");
+dadamdaLink.setAttribute("href", "https://dev.dadamda.me/scrap/list");
 dadamdaLink.setAttribute("style", "color: #475467; font-weight: 400; flex: 2; display: flex; flex-direction: row; text-decoration: none;");
 
 var shortcutIcon = document.createElement("img");
