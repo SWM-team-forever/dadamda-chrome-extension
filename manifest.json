@@ -19,7 +19,7 @@
       "48": "/assets/image/dadamda-logo48.png",
       "128": "/assets/image/dadamda-logo128.png"
    },
-  "host_permissions": ["https://api.dadamda.me/*"],
+  "host_permissions": ["https://api-dev.dadamda.me/*"],
   "permissions": [
     "tabs",
     "storage",
