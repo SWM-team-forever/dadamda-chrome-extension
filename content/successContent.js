@@ -101,8 +101,8 @@ contentDiv.appendChild(pElement);
 
 var dadamdaLink = document.createElement("a");
 dadamdaLink.setAttribute("id", "dadamda-link");
-dadamdaLink.setAttribute("href", "https://dev.dadamda.me/scrap/list");
-dadamdaLink.setAttribute("style", "color: #475467; font-weight: 400; flex: 2; display: flex; flex-direction: row; text-decoration: none;");
+dadamdaLink.setAttribute("onclick", "window.open('https://dadamda.me/scrap/list', '_blank')");
+dadamdaLink.setAttribute("style", "color: #475467; font-weight: 400; flex: 2; display: flex; flex-direction: row; text-decoration: none; cursor: pointer;");
 
 var shortcutIcon = document.createElement("img");
 dadamdaLink.setAttribute("id", "dadamda-link-img");
