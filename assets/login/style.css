@@ -52,6 +52,21 @@
   border: 1px solid #ebedf9;
 }
 
+#dadamda-privacy{
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin-top: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5%;
+  padding-left: 35%;
+  padding-right: 20%;
+}
+
 .dadamda-oauth-login-text{
   font-size: 14px;
   font-weight: 400;
