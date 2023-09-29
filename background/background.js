@@ -51,7 +51,7 @@ function handleHighlightResponse(url, tab, data) {
   chrome.storage.local.get('signedIn').then(async (result) => {
     if(data.type === "text") {
       if(data.selectedText.length === 0) {
-        contentScriptJS(tab.id, "content/whiteSpaceExistErrorContent.js");
+        contentScriptJS(tab.id, "content/blankErrorContent.js");
         return;
       }
       if(data.selectedText.length > 1000) {
