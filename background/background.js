@@ -11,13 +11,16 @@ function contentScriptJS(tabId, file) {
   });
 }
 
-function handleScrapOrHighlightResponse(url, tab, data) {
+function handleScrapResponse(url, tab, data) {
   chrome.storage.local.get('signedIn').then(async (result) => {
+    if(data.pageUrl.length > 2083) {
+      contentScriptJS(tab.id, "content/numberOfPageUrlExceededErrorContent.js");
+      return;
+    }
     if(currentScrapUrl == data.pageUrl) {
       contentScriptJS(tab.id, "content/duplicatedScrap.js");
       return;
     } else {
-      currentScrapUrl = data.pageUrl;
       if (result.signedIn) {
         contentScriptJS(tab.id, "content/content.js");
 
@@ -25,10 +28,11 @@ function handleScrapOrHighlightResponse(url, tab, data) {
           newToken = result.accessToken;
         });
 
-        let response = await postAPI(url, data);
+        let response = await postAPI(url, tab, data);
 
         if (response === "Success") {
           contentScriptJS(tab.id, "content/successContent.js");
+          currentScrapUrl = data.pageUrl;
         } else if (response === "BR002") {
           contentScriptJS(tab.id, "content/duplicatedScrap.js");
         } else if (response === "NF002" || response === "BR001") {
@@ -43,11 +47,53 @@ function handleScrapOrHighlightResponse(url, tab, data) {
   })
 }
 
+function handleHighlightResponse(url, tab, data) {
+  chrome.storage.local.get('signedIn').then(async (result) => {
+    if(data.type === "text") {
+      if(data.selectedText.length === 0) {
+        contentScriptJS(tab.id, "content/whiteSpaceExistErrorContent.js");
+        return;
+      }
+      if(data.selectedText.length > 1000) {
+        contentScriptJS(tab.id, "content/numberOfCharactersExceededErrorContent.js");
+        return;
+      }
+    } else {
+      if(data.selectedImageUrl.length > 2083) {
+        contentScriptJS(tab.id, "content/numberOfPageUrlExceededErrorContent.js");
+        return;
+      }
+    }
+
+    if (result.signedIn) {
+      contentScriptJS(tab.id, "content/content.js");
+
+      await chrome.storage.local.get('accessToken').then((result) => {
+        newToken = result.accessToken;
+      });
+
+      let response = await postAPI(url, tab, data);
+
+      if (response === "Success") {
+        contentScriptJS(tab.id, "content/successContent.js");
+      } else if (response === "BR002") {
+        contentScriptJS(tab.id, "content/duplicatedScrap.js");
+      } else if (response === "NF002" || response === "BR001") {
+        googleLogin();
+      } else {
+        contentScriptJS(tab.id, "content/errorContent.js");
+      }
+    } else {
+      googleLogin();
+    }
+  })
+}
+
 chrome.action.onClicked.addListener(async (tab) => {
   let data = {
     pageUrl: `${tab.url}`
   }
-  handleScrapOrHighlightResponse(POST_SCRAP_URL, tab, data);
+  handleScrapResponse(POST_SCRAP_URL, tab, data);
 })
 
 function googleLogin() {
@@ -78,7 +124,7 @@ function googleLogin() {
   })
 }
 
-async function postAPI(url, data) {
+async function postAPI(url, tab, data) {
   let response = await fetch(url, {
     method: "POST",
     headers: {
@@ -86,12 +132,15 @@ async function postAPI(url, data) {
       "X-AUTH-TOKEN": newToken
     },
     body: JSON.stringify(data)
+  }).catch(() => {
+    return { status: 500, resultCode: "IS000" };
   });
 
   if (response.status === 200) {
     return "Success";
-  }
-  else {
+  } else if (response.status === 500) {
+    return "IS000";
+  } else {
     let responseJson = await response.json();
     return responseJson.resultCode;
   }
@@ -112,18 +161,23 @@ chrome.contextMenus.onClicked.addListener((info) => {
   let data = null;
 
   if (selectedImageUrl === undefined) {
+    if(selectedText === undefined) {
+      selectedText = "";
+    }
     data = {
+      type: "text",
       pageUrl: `${pageUrl}`,
       selectedText: `${selectedText}`
     }
   } else {
     data = {
+      type: "image",
       pageUrl: `${pageUrl}`,
       selectedImageUrl: `${selectedImageUrl}`
     }
   }
 
   chrome.tabs.query({ currentWindow: true, active: true }, async (tabs) =>
-    handleScrapOrHighlightResponse(POST_HIGHLIGHTS_URL, tabs[0], data)
+    handleHighlightResponse(POST_HIGHLIGHTS_URL, tabs[0], data)
   );
 })
