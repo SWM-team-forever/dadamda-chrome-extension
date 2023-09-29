@@ -49,19 +49,13 @@ shadowStyle.textContent = `
     }
 
     #dadamda-title{
-        font-size: 21px;
+        font-size: 20px;
         font-weight: 700;
         color: #475467;
     }
 
     #dadamda-popup #dadamda-content{
         margin: 20px 0;
-    }
-
-    #dadamda-text1 {
-        font-size: 16px;
-        font-weight: 300;
-        color: #98A2B3;
     }
 `;
 
@@ -74,7 +68,7 @@ var header = document.createElement("header");
 
 var titleSpan = document.createElement("span");
 titleSpan.setAttribute("id", "dadamda-title");
-titleSpan.textContent = "저장에 실패하였습니다.";
+titleSpan.textContent = "공백은 저장할 수 없습니다.";
 header.appendChild(titleSpan);
 
 var iconImg = document.createElement("img");

@@ -1,20 +1,16 @@
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+@import url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css);
 
 #dadamda-popup{
   box-sizing: border-box;
-  font-family: 'NanumSquare', sans-serif;
+  font-family: 'Pretendard';
   background: #fff;
   padding: 25px;
   width: 330px;
 }
 
 .dadamda-icon {
-  width: 15%;
-}
-
-#dadamda-popup :is(header){
-  display: flex;
-  align-items: center;
+  width: 15px;
+  margin-right: 3px;
 }
 
 #dadamda-popup header{
@@ -39,7 +35,39 @@
   border: 1px solid #ebedf9;
 }
 
-#dadamda-google-login-text{
+#dadamda-kakao-login{
+  color: rgba(0, 0, 0, 0.85);
+  background-color: #FFE500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin-top:10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5%;
+  padding-left: 30%;
+  padding-right: 20%;
+  border-radius: 15px;
+  border: 1px solid #ebedf9;
+}
+
+#dadamda-privacy{
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin-top: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5%;
+  padding-left: 35%;
+  padding-right: 20%;
+}
+
+.dadamda-oauth-login-text{
   font-size: 14px;
   font-weight: 400;
 }
@@ -55,13 +83,14 @@
 }
 
 #dadamda-text1 {
-  font-size: 18px;
-  font-weight: 300;
-  margin-top: -3%;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10%;
 }
 
 #dadamda-text2, #dadamda-text3{
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   margin-top: -3%;
 }

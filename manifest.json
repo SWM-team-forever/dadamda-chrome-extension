@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "DADAMDA",
-  "description": "Add images, bookmarks, text highlights to your dadamda script book.",
-  "version": "1.1.0",
+  "description": "내용에 따라 자동으로 북마크를 구성하는 신개념 컨텐츠 맞춤 스크랩 서비스, 다담다",
+  "version": "1.2.0",
   "background": {
     "service_worker": "/background/background.js"
   },
@@ -19,7 +19,7 @@
       "48": "/assets/image/dadamda-logo48.png",
       "128": "/assets/image/dadamda-logo128.png"
    },
-  "host_permissions": ["https://api-dev.dadamda.me/*"],
+  "host_permissions": ["https://api.dadamda.me/*"],
   "permissions": [
     "tabs",
     "storage",

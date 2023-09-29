@@ -74,7 +74,7 @@ var header = document.createElement("header");
 
 var titleSpan = document.createElement("span");
 titleSpan.setAttribute("id", "dadamda-title");
-titleSpan.textContent = "저장에 실패하였습니다.";
+titleSpan.textContent = "다시 로그인해주세요!";
 header.appendChild(titleSpan);
 
 var iconImg = document.createElement("img");
