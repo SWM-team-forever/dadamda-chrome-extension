@@ -80,6 +80,7 @@ function handleHighlightResponse(url, tab, data) {
       } else if (response === "BR002") {
         contentScriptJS(tab.id, "content/duplicatedScrap.js");
       } else if (response === "NF002" || response === "BR001") {
+        contentScriptJS(tab.id, "content/authErrorContent.js");
         googleLogin();
       } else {
         contentScriptJS(tab.id, "content/errorContent.js");
