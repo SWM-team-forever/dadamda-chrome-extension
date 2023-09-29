@@ -2,6 +2,8 @@ importScripts("/assets/api/apiUrl.js")
 
 let newToken = null;
 
+let currentScrapUrl = null;
+
 function contentScriptJS(tabId, file) {
   chrome.scripting.executeScript({
     target: { tabId: tabId },
@@ -9,36 +11,34 @@ function contentScriptJS(tabId, file) {
   });
 }
 
-function contentScriptCSS(tabId, file) {
-  chrome.scripting.insertCSS({
-    target: { tabId: tabId },
-    files: [`${file}`]
-  })
-}
-
 function handleScrapOrHighlightResponse(url, tab, data) {
   chrome.storage.local.get('signedIn').then(async (result) => {
-    if (result.signedIn) {
-      contentScriptJS(tab.id, "content/content.js");
-      contentScriptCSS(tab.id, "content/content.css");
-
-      await chrome.storage.local.get('accessToken').then((result) => {
-        newToken = result.accessToken;
-      });
-
-      let response = await postAPI(url, data);
-
-      if (response === "Success") {
-        contentScriptJS(tab.id, "content/successContent.js");
-      } else if (response === "BR002") {
-        contentScriptJS(tab.id, "content/duplicatedScrap.js");
-      } else if (response === "NF002" || response === "BR001") {
-        googleLogin();
-      } else {
-        contentScriptJS(tab.id, "content/errorContent.js");
-      }
+    if(currentScrapUrl == data.pageUrl) {
+      contentScriptJS(tab.id, "content/duplicatedScrap.js");
+      return;
     } else {
-      googleLogin();
+      currentScrapUrl = data.pageUrl;
+      if (result.signedIn) {
+        contentScriptJS(tab.id, "content/content.js");
+
+        await chrome.storage.local.get('accessToken').then((result) => {
+          newToken = result.accessToken;
+        });
+
+        let response = await postAPI(url, data);
+
+        if (response === "Success") {
+          contentScriptJS(tab.id, "content/successContent.js");
+        } else if (response === "BR002") {
+          contentScriptJS(tab.id, "content/duplicatedScrap.js");
+        } else if (response === "NF002" || response === "BR001") {
+          googleLogin();
+        } else {
+          contentScriptJS(tab.id, "content/errorContent.js");
+        }
+      } else {
+        googleLogin();
+      }
     }
   })
 }
@@ -88,18 +88,18 @@ async function postAPI(url, data) {
     body: JSON.stringify(data)
   });
 
-  if (response.status >= 300) {
-    let responseJson = await response.json();
-    return await responseJson.resultCode;
+  if (response.status === 200) {
+    return "Success";
   }
   else {
-    return "Success";
+    let responseJson = await response.json();
+    return responseJson.resultCode;
   }
 }
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
-    title: "DaDamDa에 저장하기",
+    title:  "다담다에 저장하기",
     id: "Store",
     contexts: ["selection", "image"]
   });
