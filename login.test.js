@@ -12,7 +12,7 @@ describe('Google Login', () => {
     beforeEach(async function () {
         browser = await puppeteer.launch({
             headless: false,
-            slowMo: 200,
+            slowMo: 100,
             args: puppeteerArgs
         });
         [page] = await browser.pages();
@@ -32,6 +32,8 @@ describe('Google Login', () => {
 
         const popupHeading = await page.$eval('title', (e => e.innerText));
         expect(popupHeading).toEqual('Dadamda Login');
+        expect(await page.$eval('#dadamda-google-login', (e => e.href))).toEqual('https://api.dadamda.me/oauth2/authorization/google');
+        expect(await page.$eval('#dadamda-kakao-login', (e => e.href))).toEqual('https://api.dadamda.me/oauth2/authorization/kakao');
     }));
 
 });
