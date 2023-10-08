@@ -11,6 +11,5 @@
     "setupFiles": [
       "jest-webextension-mock"
     ]
-  },
-  "type": "module"
+  }
 }

@@ -1,12 +1,11 @@
-// import { handleScrapOrHighlightResponse } from "./background/background";
-
 const googleLogin = jest.fn();
-const contentScriptJS = jest.fn();
+const contentScriptJS = jest.fn((tabId, path) => {return {tabId, path}});
 const contentScriptCSS = jest.fn();
 const postAPI = jest.fn();
+postAPI.mockReturnValue("Success");
 
 function handleScrapOrHighlightResponse(url, tab, data) {
-  chrome.storage.local.get('signedIn').then(async (result) => {
+  return chrome.storage.local.get('signedIn').then(async (result) => {
     if (result.signedIn) {
       contentScriptJS(tab.id, "content/content.js");
       contentScriptCSS(tab.id, "content/content.css");
@@ -33,12 +32,23 @@ function handleScrapOrHighlightResponse(url, tab, data) {
 }
 
 describe('handleScrapOrHighlightResponse test', () => {
-  it('handleScrapOrHighlightResponse', () => {
+  it('handleScrapOrHighlightResponse', async () => {
     const url = 'https://www.google.com';
     const tab = { id: 123 };
     const data = "data";
 
-    handleScrapOrHighlightResponse(url, tab, data);
+    await handleScrapOrHighlightResponse(url, tab, data);
     expect(chrome.storage.local.get).toHaveBeenCalled();
+  });
+});
+
+describe('success response test', () => {
+  it('success test', async () => {
+    const url = 'https://www.google.com';
+    const tab = { id: 123 };
+    const data = "data";
+
+    await handleScrapOrHighlightResponse(url, tab, data);
+    expect(postAPI(url, data)).toBe("Success");
   });
 });
