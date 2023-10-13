@@ -1,4 +1,4 @@
-수정일 : 2023-08-04 16:40
+수정일 : 2023-10-13 14:40
 
 # dadamda-chrome-extension
 
@@ -21,9 +21,6 @@
 <img src="https://github.com/SWM-team-forever/dadamda-chrome-extension/assets/75533232/bb923d90-dd7b-4925-a7f1-8c76b8c7f0ab">
 
 https://chrome.google.com/webstore/detail/dadamda/kgaiabolccidmgihificdfaimdlfmcfj?hl=ko
-
-## ❤️ 베타 서비스 신청서
-https://forms.gle/rrqnNShVxzaRkQvq9
 
 ## 🛠️ 로컬 설치
 1. 가장 최신의 버전인 latest인 release에서 Source code.zip을 다운로드 받습니다.
